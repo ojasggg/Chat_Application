@@ -6,4 +6,8 @@
   body {
     @apply font-primary bg-dark text-white leading-normal;
   }
+
+  .list {
+    @apply rounded-full p-4 hover:bg-teal-500 cursor-pointer shadow-primary;
+  }
 }
