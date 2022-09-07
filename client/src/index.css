@@ -8,6 +8,30 @@
   }
 
   .list {
-    @apply rounded-full p-4 hover:bg-teal-500 cursor-pointer shadow-primary;
+    @apply rounded-full p-4 hover:bg-teal-500 cursor-pointer shadow-primary transition;
+  }
+
+  .avatar {
+    @apply rounded-full w-[40px] h-[40px] object-cover;
+  }
+
+  .h3 {
+    @apply text-[14px] lg:text-[15px] font-medium;
+  }
+
+  .p {
+    @apply text-gray-400 text-[11px] lg:text-[13px];
+  }
+
+  .input {
+    @apply border-none outline-none;
+  }
+
+  .online {
+    @apply w-[9px] h-[9px] rounded-full bg-green-500 top-2 left-10 absolute;
+  }
+
+  .h6 {
+    @apply text-gray-400 text-[12px] font-light text-center;
   }
 }
