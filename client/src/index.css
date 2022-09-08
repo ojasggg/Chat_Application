@@ -16,7 +16,7 @@
   }
 
   .avatar {
-    @apply rounded-full w-[40px] h-[40px] object-cover;
+    @apply rounded-full w-[50px] h-[50px] object-cover;
   }
 
   .h3 {

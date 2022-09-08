@@ -12,7 +12,7 @@ import { FiSearch } from "react-icons/fi";
 
 const InsideSidebar = () => {
   return (
-    <div className="bg-light_dark w-[400px] h-screen flex-2 flex flex-col border-r border-gray-600/40 shadow-primary">
+    <div className="bg-light_dark w-[400px] h-screen flex-2 flex flex-col border-x border-gray-600/40 shadow-primary">
       {/* Top Profile */}
       <div className="flex flex-row justify-between items-center p-4 border-b border-gray-600/40">
         <div className="flex flex-row items-center gap-x-2">
@@ -20,7 +20,7 @@ const InsideSidebar = () => {
             <img src={Avatar1} alt="" className="avatar" />
           </div>
           <div>
-            <h3 className="h3">Hira Kumari</h3>
+            <h3 className="h3">LoKi</h3>
             <p className="p">My Account</p>
           </div>
         </div>
@@ -29,7 +29,7 @@ const InsideSidebar = () => {
         </div>
       </div>
       {/* Search Input */}
-      <div className="flex flex-row items-center p-2 bg-gray-900/50 mx-4 my-5 rounded-xl shadow-primary">
+      <div className="flex flex-row items-center p-2 bg-gray-900/50 mx-4 my-5 rounded-xl shadow-primary hover:bg-gray-900/30 transition">
         {/* Search Icon */}
         <FiSearch className="text-4xl p-2 text-gray-400" />
         {/* Input box */}
@@ -54,7 +54,7 @@ const InsideSidebar = () => {
       {/* Online Avatar Icons */}
       <div className="flex flex-row items-center gap-x-1 ml-2 mt-2">
         {/* One Profile */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center cursor-pointer hover:bg-orange-500/40 rounded-xl transition">
           {/* avatar */}
           <div className="relative">
             <img src={Avatar1} alt="" className="avatar m-2 mb-0" />
@@ -65,7 +65,7 @@ const InsideSidebar = () => {
         </div>
 
         {/* Second Profile */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center cursor-pointer hover:bg-red-500/40 rounded-xl transition">
           {/* avatar */}
           <div className="relative">
             <img src={Avatar2} alt="" className="avatar m-2 mb-0" />
@@ -76,7 +76,7 @@ const InsideSidebar = () => {
         </div>
 
         {/* Third Profile */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center cursor-pointer hover:bg-blue-500/40 rounded-xl transition">
           {/* avatar */}
           <div className="relative">
             <img src={Avatar3} alt="" className="avatar m-2 mb-0" />
@@ -87,7 +87,7 @@ const InsideSidebar = () => {
         </div>
 
         {/* Fifth Profile */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center cursor-pointer hover:bg-gray-900/40 rounded-xl transition">
           {/* avatar */}
           <div className="relative">
             <img src={Avatar5} alt="" className="avatar m-2 mb-0" />
@@ -109,14 +109,14 @@ const InsideSidebar = () => {
         </div>
         <div className="flex flex-col gap-y-2 mt-4">
           {/* One Profile */}
-          <div className="flex flex-row items-center mt-2">
+          <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-red-500/40 rounded-xl transition">
             {/* avatar */}
             <div className="relative">
-              <img src={Avatar2} alt="" className="avatar m-2 mb-0" />
+              <img src={Avatar2} alt="" className="avatar mb-0" />
               <div className="online"></div>
             </div>
             {/* User Message */}
-            <div className="flex flex-1 justify-between gap-x-35">
+            <div className="flex flex-1 justify-between ml-2">
               <div className="flex flex-col">
                 <h3 className="h3">Weekend</h3>
                 <p className="p">Wanna travel to Japan tomorrow?</p>
@@ -127,14 +127,14 @@ const InsideSidebar = () => {
           </div>
 
           {/* Second Profile */}
-          <div className="flex flex-row items-center mt-2">
+          <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-gray-900/40 rounded-xl transition">
             {/* avatar */}
             <div className="relative">
-              <img src={Avatar5} alt="" className="avatar m-2 mb-0" />
+              <img src={Avatar5} alt="" className="avatar mb-0" />
               <div className="online"></div>
             </div>
             {/* User Message */}
-            <div className="flex flex-1 justify-between gap-x-35">
+            <div className="flex flex-1 justify-between ml-2">
               <div className="flex flex-col">
                 <h3 className="h3">Eminem</h3>
                 <p className="p">Hello..</p>
@@ -144,14 +144,14 @@ const InsideSidebar = () => {
             </div>
           </div>
           {/* One Profile */}
-          <div className="flex flex-row items-center mt-2">
+          <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-blue-500/40 rounded-xl transition">
             {/* avatar */}
             <div className="relative">
-              <img src={Avatar3} alt="" className="avatar m-2 mb-0" />
+              <img src={Avatar3} alt="" className="avatar mb-0" />
               <div className="online"></div>
             </div>
             {/* User Message */}
-            <div className="flex flex-1 justify-between gap-x-35">
+            <div className="flex flex-1 justify-between ml-2">
               <div className="flex flex-col">
                 <h3 className="h3">John</h3>
                 <p className="p">I will find you</p>
