@@ -12,9 +12,9 @@ import { FiSearch } from "react-icons/fi";
 
 const InsideSidebar = () => {
   return (
-    <div className="bg-light_dark w-[400px] h-screen flex-2 flex flex-col border-l border-gray-600">
+    <div className="bg-light_dark w-[400px] h-screen flex-2 flex flex-col border-r border-gray-600/40 shadow-primary">
       {/* Top Profile */}
-      <div className="flex flex-row justify-between items-center p-4 border-b border-gray-600">
+      <div className="flex flex-row justify-between items-center p-4 border-b border-gray-600/40">
         <div className="flex flex-row items-center gap-x-2">
           <div className="">
             <img src={Avatar1} alt="" className="avatar" />
@@ -24,7 +24,7 @@ const InsideSidebar = () => {
             <p className="p">My Account</p>
           </div>
         </div>
-        <div className="p-3 mr-5 rounded-full text-xl border-2 border-gray-500 cursor-pointer hover:bg-gray-500 transition">
+        <div className="header-list">
           <BiDotsVerticalRounded />
         </div>
       </div>
