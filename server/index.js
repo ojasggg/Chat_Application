@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const db = require("./src/database/db");
 const conversationRoute = require("./src/routes/conversation.router");
 const authenticationRoute = require("./src/routes/auth.router");
+const userRoute = require("./src/routes/user.router");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cookieParser());
 // Middle ware
 app.use("/api/conversation", conversationRoute);
 app.use("/api/auth", authenticationRoute);
+app.use("/api/user", userRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
