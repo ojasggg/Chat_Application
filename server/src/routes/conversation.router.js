@@ -8,9 +8,47 @@ router.post("/", async (req, res) => {
   });
   try {
     const savedConversation = await newConversation.save();
-    res.status(200).json({ success: true, savedConversation });
+    return res.status(200).json({ success: true, savedConversation });
   } catch (error) {
-    res.status(500).json({ success: false, error });
+    return res.status(500).json({ success: false, error });
+  }
+});
+
+// Find Conversation using anyone userId
+
+router.get("/:userId", async (req, res) => {
+  try {
+    const conversation = await Conversation.find({
+      members: { $in: [req.params.userId] },
+    });
+    if (conversation.length !== 0) {
+      return res.status(200).json({ success: true, conversation });
+    }
+    return res
+      .status(500)
+      .json({ success: false, message: "No Conversation Found" });
+  } catch (error) {
+    return res.status(500).json({ success: false, error });
+  }
+});
+
+// Find using both userIds
+
+router.get("/:firstUserId/:secondUserId", async (req, res) => {
+  try {
+    const conversation = await Conversation.find({
+      members: {
+        $all: [req.params.firstUserId, req.params.secondUserId],
+      },
+    });
+    if (conversation.length !== 0) {
+      return res.status(200).json({ success: true, conversation });
+    }
+    return res
+      .status(500)
+      .json({ success: false, message: "No Conversation Found" });
+  } catch (error) {
+    return res.status(500).json({ success: false, error });
   }
 });
 
