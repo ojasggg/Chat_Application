@@ -5,6 +5,7 @@ const db = require("./src/database/db");
 const conversationRoute = require("./src/routes/conversation.router");
 const authenticationRoute = require("./src/routes/auth.router");
 const userRoute = require("./src/routes/user.router");
+const messageRoute = require("./src/routes/message.router");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use("/api/conversation", conversationRoute);
 app.use("/api/auth", authenticationRoute);
 app.use("/api/user", userRoute);
+app.use("/api/message", messageRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
