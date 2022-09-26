@@ -4,16 +4,18 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import InsideSidebar from "./components/InsideSidebar";
 import Main from "./components/Main";
+import Login from "./components/Login";
 
 const App = () => {
   return (
     <div className="flex flex-row">
       {/* Sidebar */}
-      <Sidebar />
+      {/* <Sidebar /> */}
       {/* Second Sidebar */}
-      <InsideSidebar />
+      {/* <InsideSidebar /> */}
       {/* Main*/}
-      <Main />
+      {/* <Main /> */}
+      <Login />
     </div>
   );
 };
