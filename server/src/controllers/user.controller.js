@@ -29,4 +29,17 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-module.exports = { getSingleUser, getUsers };
+// Delete User using userId
+const deleteUser = async (req, res, next) => {
+  try {
+    await User.deleteOne({ _id: req.params._id });
+    return res.status(200).json({
+      success: true,
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getSingleUser, getUsers, deleteUser };
