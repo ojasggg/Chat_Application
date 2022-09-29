@@ -3,7 +3,7 @@ import React from "react";
 // Import Logo
 import Logo from "../assets/img/logo.png";
 
-const LoginLeft = () => {
+const AuthLeft = () => {
   return (
     <div className="flex-1 bg-blue-600/90 w-full">
       <div className="items-center m-3">
@@ -22,4 +22,4 @@ const LoginLeft = () => {
   );
 };
 
-export default LoginLeft;
+export default AuthLeft;
