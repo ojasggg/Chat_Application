@@ -3,6 +3,7 @@ import React from "react";
 // Import icons
 import { BiEnvelopeOpen } from "react-icons/bi";
 import { MdOutlinePassword, MdAlternateEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -74,12 +75,12 @@ const Register = () => {
         <div className="mt-2 flex justify-start p text-[15px]">
           Aready have an account?
           <span className="ml-1">
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="text-blue-400 hover:text-blue-500 transition"
             >
               Sign in
-            </a>
+            </Link>
           </span>
         </div>
       </form>
