@@ -1,11 +1,31 @@
-import React from "react";
+import { useState } from "react";
 
 // Import icons
 import { BiEnvelopeOpen } from "react-icons/bi";
 import { MdOutlinePassword, MdAlternateEmail } from "react-icons/md";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [passwordType, setPasswordType] = useState("password");
+  const [conformPasswordType, setConformPasswordType] = useState("password");
+
+  // Toggle Function to change input type
+  const togglePasswordType = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
+  const toggleConformPasswordType = () => {
+    if (conformPasswordType === "password") {
+      setConformPasswordType("text");
+      return;
+    }
+    setConformPasswordType("password");
+  };
   return (
     <div className="flex flex-col w-[50%] m-auto lg:mt-[60px] xl:mt-[200px]">
       <div className="text-3xl font-normal">Register</div>
@@ -46,10 +66,21 @@ const Register = () => {
             <MdOutlinePassword className="text-xl m-1" />
             <input
               className="input bg-transparent ml-2 placeholder:text-sm  w-full"
-              type="password"
+              type={passwordType}
               placeholder="Enter Your Password"
               id="password"
             />
+            {passwordType && passwordType === "password" ? (
+              <AiOutlineEyeInvisible
+                className="text-2xl text-gray-600 cursor-pointer hover:text-gray-400 transition"
+                onClick={togglePasswordType}
+              />
+            ) : (
+              <AiOutlineEye
+                className="text-2xl text-gray-600 cursor-pointer hover:text-gray-400 transition"
+                onClick={togglePasswordType}
+              />
+            )}
           </div>
         </div>
         <div className="flex flex-col mt-4">
@@ -63,10 +94,21 @@ const Register = () => {
             <MdOutlinePassword className="text-xl m-1" />
             <input
               className="input bg-transparent ml-2 placeholder:text-sm w-full"
-              type="password"
+              type={conformPasswordType}
               placeholder="Enter Your Conform Password"
               id="conform-password"
             />
+            {conformPasswordType && conformPasswordType === "password" ? (
+              <AiOutlineEyeInvisible
+                className="text-2xl text-gray-600 cursor-pointer hover:text-gray-400 transition"
+                onClick={toggleConformPasswordType}
+              />
+            ) : (
+              <AiOutlineEye
+                className="text-2xl text-gray-600 cursor-pointer hover:text-gray-400 transition"
+                onClick={toggleConformPasswordType}
+              />
+            )}
           </div>
         </div>
         <button
