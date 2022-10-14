@@ -32,7 +32,7 @@ const Login = () => {
             <MdOutlinePassword className="text-xl m-1" />
             <input
               className="input bg-transparent ml-2 placeholder:text-sm"
-              type="text"
+              type="password"
               placeholder="Enter Your Password"
               id="username"
             />
@@ -41,7 +41,10 @@ const Login = () => {
         <div className="mt-2 flex justify-end p text-[15px] hover:text-gray-500 transition">
           <a href="#">Forget Password ? </a>
         </div>
-        <button className="flex justify-center max-w-[500px] bg-blue-600/100 rounded-xl p-3 mt-8 cursor-pointer hover:bg-blue-600/80 transition text-lg font-primary">
+        <button
+          className="flex justify-center max-w-[500px] bg-blue-600/100 rounded-xl p-3 mt-8 cursor-pointer hover:bg-blue-600/80 transition text-lg font-primary"
+          type="submit"
+        >
           Login
         </button>
         <div className="mt-2 flex justify-start p text-[15px]">

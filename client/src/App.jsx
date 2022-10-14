@@ -4,7 +4,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import InsideSidebar from "./components/InsideSidebar";
 import Main from "./components/Main";
-import Login from "./components/Login";
+import Auth from "./components/Auth";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
       {/* <InsideSidebar /> */}
       {/* Main*/}
       {/* <Main /> */}
-      <Login />
+      <Auth />
     </div>
   );
 };
