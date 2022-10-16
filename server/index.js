@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+
 const db = require("./src/database/db");
 const conversationRoute = require("./src/routes/conversation.router");
 const authenticationRoute = require("./src/routes/auth.router");
@@ -11,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 // Middle ware
 app.use("/api/conversation", conversationRoute);
