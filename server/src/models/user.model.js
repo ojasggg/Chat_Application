@@ -1,29 +1,29 @@
 const mongoose = require("mongoose");
 
+const uniqueValidator = require("mongoose-unique-validator");
+
 const UserSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: true,
     },
     lastName: {
       type: String,
-      required: true,
     },
     username: {
       type: String,
-      required: true,
+      required: [true, "Username is required"],
       unique: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Email is required"],
       unique: true,
       lowercase: true,
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "Password is required"],
     },
     age: {
       type: Number,
@@ -45,5 +45,7 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+UserSchema.plugin(uniqueValidator, { message: "Unique {PATH} is required" });
 
 module.exports = mongoose.model("User", UserSchema);
