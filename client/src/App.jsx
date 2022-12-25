@@ -1,22 +1,18 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 // Import components
-import Sidebar from "./components/Sidebar";
-import InsideSidebar from "./components/InsideSidebar";
-import Main from "./components/Main";
-import Auth from "./components/Auth";
+import { Register } from "./page/Register";
+import { Home } from "./page/Home";
+import { Login } from "./page/Login";
 
 const App = () => {
   return (
-    <div className="flex flex-row">
-      {/* Sidebar */}
-      {/* <Sidebar /> */}
-      {/* Second Sidebar */}
-      {/* <InsideSidebar /> */}
-      {/* Main*/}
-      {/* <Main /> */}
-      <Auth />
-    </div>
+    <Routes>
+      <Route index path="/" element={<Home />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 };
 
