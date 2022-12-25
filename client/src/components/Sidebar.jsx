@@ -34,7 +34,7 @@ const Sidebar = () => {
             <a href="#">
               <HiOutlineUsers />
             </a>
-          </li>
+          </li>          
           <li className="list">
             <a href="#">
               <IoCallOutline />
