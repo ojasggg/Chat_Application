@@ -32,7 +32,8 @@ const LoginForm = () => {
         { username, password },
         { withCredentials: true }
       );
-      console.log(user.data);
+      // console.log(user.data);
+      localStorage.setItem("user", JSON.stringify(user.data));
       toast.success("User Logged in", {
         position: "bottom-right",
         autoClose: 3000,
