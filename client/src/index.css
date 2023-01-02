@@ -35,11 +35,27 @@
     @apply w-[9px] h-[9px] rounded-full bg-green-500 top-2 left-10 absolute;
   }
 
+  .offline {
+    @apply w-[9px] h-[9px] rounded-full bg-red-500 top-2 left-10 absolute;
+  }
+
   .online-top {
     @apply w-[9px] h-[9px] rounded-full bg-green-500 top-0 left-8 absolute;
   }
 
   .h6 {
-    @apply text-gray-400 text-[12px] font-light text-center;
+    @apply text-gray-400 text-[12px] font-light text-left ml-2  w-[100px];
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

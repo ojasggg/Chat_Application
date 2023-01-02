@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,8 +19,6 @@ const RegisterForm = () => {
     password: undefined,
     conformPassword: undefined,
   });
-
-  const navigate = useNavigate();
 
   // Toggle Function to change input type
   const togglePasswordType = () => {
@@ -67,7 +65,7 @@ const RegisterForm = () => {
         autoClose: 3000,
         pauseOnHover: false,
       });
-      setTimeout(() => navigate("/login"), 3000);
+      setTimeout(() => <Navigate replace to="/auth/login" />, 3000);
     } catch (error) {
       console.log(error.response.data.message);
       const errorMsg = error.response.data.message;
@@ -187,7 +185,7 @@ const RegisterForm = () => {
           Already have an account?
           <span className="ml-1">
             <Link
-              to="/login"
+              to="/auth/login"
               className="text-blue-400 hover:text-blue-500 transition"
             >
               Sign in

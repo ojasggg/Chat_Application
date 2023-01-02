@@ -1,9 +1,9 @@
 import LoginForm from "./LoginForm";
 
-export const AuthRightLogin = () => {
+export const AuthRightLogin = ({ setAuth }) => {
   return (
     <div className="flex-1 h-full">
-      <LoginForm />
+      <LoginForm setAuth={setAuth} />
     </div>
   );
 };

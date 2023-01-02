@@ -3,10 +3,19 @@ import React from "react";
 // Import icon
 import { BiDotsVerticalRounded, BiChevronRight } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
-import InsideSidebarConversation from "./InsideSidebarConversation";
-import InsideSidebarOnlineStats from "./InsideSidebarOnlineStats";
+import ChatNotification from "./ChatNotification";
+import OnlineStats from "./OnlineStats";
 
-const InsideSidebar = ({ conversations, user, setCurrentChat }) => {
+const ChatSidebar = ({ conversations, user, setCurrentChat, onlineUsers }) => {
+  const checkOnlineStatus = (conversations) => {
+    const currentChatMembers = conversations.members.find(
+      (member) => member !== user._id
+    );
+    const online = onlineUsers.find(
+      (user) => user.userId === currentChatMembers
+    );
+    return online ? true : false;
+  };
   return (
     <div className="bg-light_dark w-[400px] h-screen flex-2 flex flex-col border-x border-gray-600/40 shadow-primary">
       {/* Top Profile */}
@@ -58,14 +67,12 @@ const InsideSidebar = ({ conversations, user, setCurrentChat }) => {
       {/* Online Avatar Icons */}
       <div className="flex flex-row items-center gap-x-1 ml-2 mt-2">
         {/* One Profile */}
-        {conversations.map((conversation) => (
-          <div
-            onClick={() => setCurrentChat(conversation)}
-            key={conversation._id}
-          >
-            <InsideSidebarOnlineStats
+        {conversations.map((conversation, index) => (
+          <div onClick={() => setCurrentChat(conversation)} key={index}>
+            <OnlineStats
               conversation={conversation}
               currentUserId={user._id}
+              online={checkOnlineStatus(conversation)}
             />
           </div>
         ))}
@@ -81,15 +88,12 @@ const InsideSidebar = ({ conversations, user, setCurrentChat }) => {
           </h3>
         </div>
         <div className="flex flex-col gap-y-2 mt-4">
-          {conversations.map((conversation) => (
-            <div
-              onClick={() => setCurrentChat(conversation)}
-              key={conversation._id}
-            >
-              <InsideSidebarConversation
+          {conversations.map((conversation, index) => (
+            <div onClick={() => setCurrentChat(conversation)} key={index}>
+              <ChatNotification
                 conversation={conversation}
                 currentUserId={user._id}
-                key={conversation._id}
+                online={checkOnlineStatus(conversation)}
               />
             </div>
           ))}
@@ -99,4 +103,4 @@ const InsideSidebar = ({ conversations, user, setCurrentChat }) => {
   );
 };
 
-export default InsideSidebar;
+export default ChatSidebar;

@@ -1,22 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Import components
-import { Register } from "./page/Register";
-import { Home } from "./page/Home";
-import { Login } from "./page/Login";
+import { Register } from "./page/Auth/Register";
+import { Home } from "./page/Chat/Chat";
+import { Login } from "./page/Auth/Login";
 
 const App = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => JSON.parse(localStorage.getItem("user")) || false
+  );
+  const setAuth = (value) => {
+    setIsAuthenticated(value);
+  };
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
   return (
     <Routes>
       <Route
-        index
-        path="/"
-        element={user ? <Home user={user} /> : <Navigate to="../login" />}
+        path="/chat"
+        element={
+          isAuthenticated ? (
+            <Home user={isAuthenticated} />
+          ) : (
+            <Navigate replace to="/auth/login" />
+          )
+        }
       />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={user ? <Navigate to="../" /> : <Login />} />
+      <Route path="/auth">
+        <Route index element={<Login setAuth={setAuth} />}></Route>
+        <Route path="login" element={<Login setAuth={setAuth} />}></Route>
+        <Route path="register" element={<Register />}></Route>
+      </Route>
     </Routes>
   );
 };

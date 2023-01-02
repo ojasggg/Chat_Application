@@ -8,7 +8,7 @@ import { MdOutlinePassword } from "react-icons/md";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 
-const LoginForm = () => {
+const LoginForm = ({ setAuth }) => {
   const [username, setUsername] = useState(undefined);
   const [password, setPassword] = useState(undefined);
   const [passwordType, setPasswordType] = useState("password");
@@ -33,13 +33,13 @@ const LoginForm = () => {
         { withCredentials: true }
       );
       // console.log(user.data);
-      localStorage.setItem("user", JSON.stringify(user.data));
+      setAuth(user.data);
       toast.success("User Logged in", {
         position: "bottom-right",
         autoClose: 3000,
         pauseOnHover: false,
       });
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/chat"), 2000);
     } catch (error) {
       console.log(error.response.data.message);
       toast.error(error.response.data.message, {
