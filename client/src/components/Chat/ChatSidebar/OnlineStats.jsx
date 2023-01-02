@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import Avatar2 from "/assets/img/avatar2.jpg";
 
-const InsideSidebarConversation = ({ currentUserId, conversation }) => {
+const OnlineStats = ({ conversation, currentUserId, online }) => {
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     const userId = conversation.members.find((id) => id !== currentUserId);
@@ -17,10 +17,9 @@ const InsideSidebarConversation = ({ currentUserId, conversation }) => {
     };
     getUserData();
   }, []);
-
   return (
     <>
-      <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-orange-500/40 rounded-xl transition">
+      <div className="flex flex-col items-center cursor-pointer hover:bg-orange-500/40 rounded-xl transition">
         {/* avatar */}
         <div className="relative">
           <img
@@ -30,22 +29,15 @@ const InsideSidebarConversation = ({ currentUserId, conversation }) => {
                 : "/assets/img/default.png"
             }
             alt={userData?.username?.slice(0, 1)}
-            className="avatar mb-0"
+            className="avatar m-2 mb-0"
           />
-          <div className="online"></div>
+          <div className={online ? "online" : "offline"}></div>
         </div>
-        {/* User Message */}
-        <div className="flex flex-1 justify-between ml-2">
-          <div className="flex flex-col">
-            <h3 className="h3">{userData?.username}</h3>
-            <p className="p">Wanna travel to Japan tomorrow?</p>
-          </div>
-
-          <div className="p mr-2">Yesterday</div>
-        </div>
+        {/* user name */}
+        <h6 className="h6 mt-1">{userData?.username}</h6>
       </div>
     </>
   );
 };
 
-export default InsideSidebarConversation;
+export default OnlineStats;

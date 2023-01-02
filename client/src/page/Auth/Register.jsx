@@ -1,6 +1,6 @@
 import React from "react";
-import { AuthLeft } from "../components/AuthLeft";
-import { AuthRightRegister } from "../components/AuthRightRegister";
+import { AuthLeft } from "../../components/Auth/AuthLeft";
+import { AuthRightRegister } from "../../components/Auth/Register/AuthRightRegister";
 
 export const Register = () => {
   return (
