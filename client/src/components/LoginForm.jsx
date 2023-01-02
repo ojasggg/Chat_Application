@@ -1,14 +1,56 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 // Import icons
 import { BiEnvelopeOpen } from "react-icons/bi";
 import { MdOutlinePassword } from "react-icons/md";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
 
-const Login = () => {
+const LoginForm = () => {
+  const [username, setUsername] = useState(undefined);
+  const [password, setPassword] = useState(undefined);
   const [passwordType, setPasswordType] = useState("password");
 
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (username === undefined || password === undefined) {
+        toast.error("Please fillout every input field", {
+          position: "bottom-right",
+          autoClose: 3000,
+          pauseOnHover: false,
+        });
+        return;
+      }
+      const user = await Axios.post(
+        `/api/auth/login`,
+        { username, password },
+        { withCredentials: true }
+      );
+      // console.log(user.data);
+      localStorage.setItem("user", JSON.stringify(user.data));
+      toast.success("User Logged in", {
+        position: "bottom-right",
+        autoClose: 3000,
+        pauseOnHover: false,
+      });
+      setTimeout(() => navigate("/"), 2000);
+    } catch (error) {
+      console.log(error.response.data.message);
+      toast.error(error.response.data.message, {
+        position: "bottom-right",
+        autoClose: 3000,
+        pauseOnHover: false,
+      });
+    }
+  };
+
+  // Password visible function
   const togglePasswordType = () => {
     if (passwordType === "password") {
       setPasswordType("text");
@@ -17,9 +59,9 @@ const Login = () => {
     setPasswordType("password");
   };
   return (
-    <div className="flex flex-col w-[50%] m-auto mt-[150px] ">
+    <div className="flex flex-col w-[50%] m-auto mt-[150px] h-full ">
       <div className="text-4xl font-normal">Log in</div>
-      <form className="flex flex-col mt-10">
+      <form className="flex flex-col mt-10" onSubmit={handleLogin}>
         <div className="flex flex-col">
           <label htmlFor="username" className="text-lg font-normal text-white">
             Username
@@ -31,6 +73,7 @@ const Login = () => {
               type="text"
               placeholder="Enter Your Username"
               id="username"
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
         </div>
@@ -45,6 +88,7 @@ const Login = () => {
               type={passwordType}
               placeholder="Enter Your Password"
               id="password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             {passwordType && passwordType === "password" ? (
               <AiOutlineEyeInvisible
@@ -80,8 +124,9 @@ const Login = () => {
           </span>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
 
-export default Login;
+export default LoginForm;

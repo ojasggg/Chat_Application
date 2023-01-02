@@ -1,26 +1,30 @@
 import React from "react";
 
-// Import Avatar
-import Avatar1 from "../assets/img/avatar1.jpg";
-import Avatar2 from "../assets/img/avatar2.jpg";
-import Avatar3 from "../assets/img/avatar3.jpg";
-import Avatar5 from "../assets/img/avatar5.jpg";
-
 // Import icon
 import { BiDotsVerticalRounded, BiChevronRight } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
+import InsideSidebarConversation from "./InsideSidebarConversation";
+import InsideSidebarOnlineStats from "./InsideSidebarOnlineStats";
 
-const InsideSidebar = () => {
+const InsideSidebar = ({ conversations, user, setCurrentChat }) => {
   return (
     <div className="bg-light_dark w-[400px] h-screen flex-2 flex flex-col border-x border-gray-600/40 shadow-primary">
       {/* Top Profile */}
       <div className="flex flex-row justify-between items-center p-4 border-b border-gray-600/40">
         <div className="flex flex-row items-center gap-x-2">
           <div className="">
-            <img src={Avatar1} alt="" className="avatar" />
+            <img
+              src={
+                user?.profilePicture !== ""
+                  ? user?.profilePicture
+                  : "/assets/img/avatar1.jpg"
+              }
+              alt=""
+              className="avatar"
+            />
           </div>
           <div>
-            <h3 className="h3">LoKi</h3>
+            <h3 className="h3">{user?.username}</h3>
             <p className="p">My Account</p>
           </div>
         </div>
@@ -54,48 +58,17 @@ const InsideSidebar = () => {
       {/* Online Avatar Icons */}
       <div className="flex flex-row items-center gap-x-1 ml-2 mt-2">
         {/* One Profile */}
-        <div className="flex flex-col items-center cursor-pointer hover:bg-orange-500/40 rounded-xl transition">
-          {/* avatar */}
-          <div className="relative">
-            <img src={Avatar1} alt="" className="avatar m-2 mb-0" />
-            <div className="online"></div>
+        {conversations.map((conversation) => (
+          <div
+            onClick={() => setCurrentChat(conversation)}
+            key={conversation._id}
+          >
+            <InsideSidebarOnlineStats
+              conversation={conversation}
+              currentUserId={user._id}
+            />
           </div>
-          {/* user name */}
-          <h6 className="h6 mt-1">Loki</h6>
-        </div>
-
-        {/* Second Profile */}
-        <div className="flex flex-col items-center cursor-pointer hover:bg-red-500/40 rounded-xl transition">
-          {/* avatar */}
-          <div className="relative">
-            <img src={Avatar2} alt="" className="avatar m-2 mb-0" />
-            <div className="online"></div>
-          </div>
-          {/* user name */}
-          <h6 className="h6 mt-1">Weekend</h6>
-        </div>
-
-        {/* Third Profile */}
-        <div className="flex flex-col items-center cursor-pointer hover:bg-blue-500/40 rounded-xl transition">
-          {/* avatar */}
-          <div className="relative">
-            <img src={Avatar3} alt="" className="avatar m-2 mb-0" />
-            <div className="online"></div>
-          </div>
-          {/* user name */}
-          <h6 className="h6 mt-1">John</h6>
-        </div>
-
-        {/* Fifth Profile */}
-        <div className="flex flex-col items-center cursor-pointer hover:bg-gray-900/40 rounded-xl transition">
-          {/* avatar */}
-          <div className="relative">
-            <img src={Avatar5} alt="" className="avatar m-2 mb-0" />
-            <div className="online"></div>
-          </div>
-          {/* user name */}
-          <h6 className="h6 mt-1">Eminem</h6>
-        </div>
+        ))}
       </div>
       {/* Messages */}
       <div className="flex flex-col mx-2 mt-6">
@@ -108,58 +81,18 @@ const InsideSidebar = () => {
           </h3>
         </div>
         <div className="flex flex-col gap-y-2 mt-4">
-          {/* One Profile */}
-          <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-red-500/40 rounded-xl transition">
-            {/* avatar */}
-            <div className="relative">
-              <img src={Avatar2} alt="" className="avatar mb-0" />
-              <div className="online"></div>
+          {conversations.map((conversation) => (
+            <div
+              onClick={() => setCurrentChat(conversation)}
+              key={conversation._id}
+            >
+              <InsideSidebarConversation
+                conversation={conversation}
+                currentUserId={user._id}
+                key={conversation._id}
+              />
             </div>
-            {/* User Message */}
-            <div className="flex flex-1 justify-between ml-2">
-              <div className="flex flex-col">
-                <h3 className="h3">Weekend</h3>
-                <p className="p">Wanna travel to Japan tomorrow?</p>
-              </div>
-
-              <div className="p mr-2">Yesterday</div>
-            </div>
-          </div>
-
-          {/* Second Profile */}
-          <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-gray-900/40 rounded-xl transition">
-            {/* avatar */}
-            <div className="relative">
-              <img src={Avatar5} alt="" className="avatar mb-0" />
-              <div className="online"></div>
-            </div>
-            {/* User Message */}
-            <div className="flex flex-1 justify-between ml-2">
-              <div className="flex flex-col">
-                <h3 className="h3">Eminem</h3>
-                <p className="p">Hello..</p>
-              </div>
-
-              <div className="p mr-2">1.02 AM</div>
-            </div>
-          </div>
-          {/* One Profile */}
-          <div className="flex flex-row items-center p-2 cursor-pointer hover:bg-blue-500/40 rounded-xl transition">
-            {/* avatar */}
-            <div className="relative">
-              <img src={Avatar3} alt="" className="avatar mb-0" />
-              <div className="online"></div>
-            </div>
-            {/* User Message */}
-            <div className="flex flex-1 justify-between ml-2">
-              <div className="flex flex-col">
-                <h3 className="h3">John</h3>
-                <p className="p">I will find you</p>
-              </div>
-
-              <div className="p mr-2">5.10 PM</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

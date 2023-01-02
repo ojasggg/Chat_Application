@@ -1,11 +1,11 @@
 import React from "react";
 
 // Import Logo
-import Logo from "../assets/img/logo.png";
+import Logo from "/assets/img/logo.png";
 
-const AuthLeft = () => {
+export const AuthLeft = () => {
   return (
-    <div className="flex-1 bg-blue-600/90 w-full">
+    <div className="flex-1 bg-blue-600/90 w-full h-screen">
       <div className="items-center m-3">
         <img src={Logo} alt="" />
       </div>
@@ -21,5 +21,3 @@ const AuthLeft = () => {
     </div>
   );
 };
-
-export default AuthLeft;

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-primary bg-dark text-white leading-normal;
+    @apply font-primary bg-dark text-white leading-normal h-screen overflow-hidden;
   }
 
   .list {

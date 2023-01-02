@@ -1,8 +1,8 @@
 import React from "react";
 
 // Import Logo
-import Logo from "../assets/img/logo.png";
-import Avatar1 from "../assets/img/avatar1.jpg";
+import Logo from "/assets/img/logo.png";
+import Avatar1 from "/assets/img/avatar1.jpg";
 
 // Import Icons
 import { TbMessages } from "react-icons/tb";
